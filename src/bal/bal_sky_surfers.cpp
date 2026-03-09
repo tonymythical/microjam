@@ -26,7 +26,7 @@ namespace bal
 {
 bal_sky_surfers::bal_sky_surfers([[maybe_unused]] int completed_games, [[maybe_unused]] const mj::game_data& data) :
     mj::game("bal"),
-    _bal_player(player({20, 0}, 2)),
+    _bal_player(player({0, 60}, 2)),
     _spawn_rocks(0),
     _player_intersects(false)
     {}
