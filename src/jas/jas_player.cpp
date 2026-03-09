@@ -10,21 +10,6 @@
 namespace jas
 {
 
-    /**
-     * player constructor
-     *
-     * @param starting_position the location to start the player at
-     * @param speed the pixels/frame the player moves at in each dimension
-     */
-    player::player(bn::fixed_point starting_position, bn::fixed vertical_speed, bn::fixed gravity, bool engine_fired)
-        : _sprite(bn::sprite_items::templander.create_sprite(starting_position)),
-          _vertical_speed(vertical_speed),
-          _gravity(gravity),
-          _crashed(false),
-          _engine_fired(false)
-    {
-    }
-
 /**
  * player constructor
  * 
