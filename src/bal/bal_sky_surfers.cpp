@@ -40,24 +40,39 @@ int bal_sky_surfers::total_frames() const {
     return 600; // 600 frames at 60fps = 10 seconds
 }
 
+//spawns a rock at the top of the screen
+void bal_sky_surfers::spawn_rock(){
+    _spawn_rocks++;
+    if(_spawn_rocks >= 60 && _rocks.size() < _rocks.max_size()){
+        for(int i=0; i<3; i++){
+            int rand_x = _rng.get_int(MIN_X, MAX_X);
+            _rocks.push_back(rock(rand_x, MIN_Y, 2, ROCK_SIZE));
+        }
+        _spawn_rocks = 0;
+    }
+}
+
 mj::game_result bal_sky_surfers::play([[maybe_unused]] const mj::game_data& data)
 {
     mj::game_result result;
 
     _bal_player.update();
 
-    //spawns the rocks at the top
-    _spawn_rocks++;
-    if(_spawn_rocks >= 60 && _rocks.size() < _rocks.max_size()){
-        int rand_x = _rng.get_int(MIN_X, MAX_X);
-        _rocks.push_back(rock(rand_x, MIN_Y, 1.5, ROCK_SIZE));
-        _spawn_rocks = 0;
-    }
+    spawn_rock();
+    spawn_rock();
+    spawn_rock();
+    spawn_rock();
+    spawn_rock();
+    spawn_rock();
+    spawn_rock();
+    spawn_rock();
+    spawn_rock();
 
     for(int i = _rocks.size() - 1; i >= 0; i--){
     //checks if rocks are off the screen
     bool off_screen = _rocks[i].update();
-
+    
+    //checks if player got hit by a rock
     if(_rocks[i].bounding_box.intersects(_bal_player.bounding_box)){
         _player_intersects = true;
         result.exit = true;

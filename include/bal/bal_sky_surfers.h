@@ -29,11 +29,11 @@ namespace bal
         void fade_out(const mj::game_data& data) override;
     private:
         player _bal_player;
-        bn::vector<rock, 20> _rocks;
+        bn::vector<rock, 50> _rocks;
         int _spawn_rocks;
         bn::random _rng;
         bool _player_intersects;
-
+        void spawn_rock();
 };
 
 }
