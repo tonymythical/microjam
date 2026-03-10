@@ -43,7 +43,10 @@ namespace jpb {
     }
 
     bool jpb_alien_shooter::victory() const {
-        return _player.enemy_intersect(_player& _player, _enemy& _enemy);
+        if (_player.enemy_intersect(_enemy.enemy_box)) {
+            return true;
+        }
+        return false;
     }
 
     void jpb_alien_shooter::fade_in([[maybe_unused]] const mj::game_data& data) {

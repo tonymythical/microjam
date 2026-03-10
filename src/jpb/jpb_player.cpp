@@ -35,7 +35,7 @@ namespace jpb {
 
     }
 
-    bool jpb_player::enemy_intersect(jpb_player& player, jpb_enemy& enemy) const {
-        return player.player_box.intersects(enemy.enemy_box);
+    bool jpb_player::enemy_intersect(bn::rect enemy_box) const {
+        return player_box.intersects(enemy_box);
     }
 }
