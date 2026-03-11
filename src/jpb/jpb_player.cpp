@@ -13,38 +13,38 @@ namespace jpb {
                         box_size.height());
     }
 
-    jpb_player::jpb_player(bn::fixed_point starting_position, bn::size _size, bn::fixed _speed) :
-        player_sprite(bn::sprite_items::jpb_ship.create_sprite(starting_position)),
-        speed(_speed),
-        player_box(create_bounding_box(player_sprite, _size))
+    jpb_player::jpb_player(bn::fixed_point starting_position, bn::size size, bn::fixed speed) :
+        _player_sprite(bn::sprite_items::jpb_ship.create_sprite(starting_position)),
+        _speed(speed),
+        _player_box(create_bounding_box(_player_sprite, size))
     {}
     
     void jpb_player::update() {
         if(bn::keypad::left_held()) {
-            player_sprite.set_x(player_sprite.x() - speed);
+            _player_sprite.set_x(_player_sprite.x() - _speed);
         }
         if(bn::keypad::right_held()) {
-            player_sprite.set_x(player_sprite.x() + speed);
+            _player_sprite.set_x(_player_sprite.x() + _speed);
         }
         if(bn::keypad::up_held()) {
-            player_sprite.set_y(player_sprite.y() - speed);
+            _player_sprite.set_y(_player_sprite.y() - _speed);
         }
         if(bn::keypad::down_held()) {
-            player_sprite.set_y(player_sprite.y() + speed);
+            _player_sprite.set_y(_player_sprite.y() + _speed);
         }
 
-        player_box = create_bounding_box(player_sprite, {16, 8});
+        _player_box = create_bounding_box(_player_sprite, {16, 8});
 
     }
 
     bool jpb_player::enemy_intersect(bn::rect enemy_box) const {
-        return player_box.intersects(enemy_box);
+        return _player_box.intersects(enemy_box);
     }
 
     void jpb_player::shoot(bn::vector<jpb_missile, 10>& _missiles) {
         if (bn::keypad::a_pressed()) {
             if (_missiles.size() < 10 ) {
-                _missiles.push_back(jpb_missile({player_sprite.x(), player_sprite.y()}, 1, {8, 8}));
+                _missiles.push_back(jpb_missile({_player_sprite.x(), _player_sprite.y()}, 1, {8, 8}));
             }
         }
     }

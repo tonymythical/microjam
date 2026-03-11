@@ -32,7 +32,7 @@ namespace jpb {
     bn::vector<jpb_missile, 10> _trashbin;
 
     bn::string<16> jpb_alien_shooter::title() const {
-        return "placeholder";
+        return "Shoot the aliens";
     }
 
     int jpb_alien_shooter::total_frames() const {
@@ -60,7 +60,7 @@ namespace jpb {
     }
 
     bool jpb_alien_shooter::victory() const {
-        if (_player.enemy_intersect(_enemy.enemy_box)) {
+        if (_player.enemy_intersect(_enemy._enemy_box)) {
             return true;
         }
         return false;

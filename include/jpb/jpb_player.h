@@ -23,9 +23,9 @@ class jpb_player {
 
         bool enemy_intersect(bn::rect enemy_box) const;
     
-        bn::sprite_ptr player_sprite;
-        bn::fixed speed;
-        bn::rect player_box;
+        bn::sprite_ptr _player_sprite;
+        bn::fixed _speed;
+        bn::rect _player_box;
 };
 
 }

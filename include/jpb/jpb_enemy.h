@@ -11,8 +11,8 @@ class jpb_enemy {
 
         void update();
 
-        bn::sprite_ptr enemy_sprite;
-        bn::rect enemy_box;
+        bn::sprite_ptr _enemy_sprite;
+        bn::rect _enemy_box;
 };
 
 }
