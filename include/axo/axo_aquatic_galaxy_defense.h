@@ -69,6 +69,10 @@ class axo_aquatic_galaxy_defense : public mj::game
         player _player;
         // The obstacles in the game
         bn::vector<obstacle, 12> _obstacles = {};
+
+        // Returns progressively slower player speeds the harder the difficulty
+        // The slower the player moves, the harder it is to shoot any rocks that come close to them, but the easier it is to avoid them
+        bn::fixed _recommended_player_speed(mj::difficulty_level difficulty);
 };
 
 }
