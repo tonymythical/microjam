@@ -22,30 +22,22 @@ namespace knc {
         void fade_out(const mj::game_data& data) override;
 
     private:
-        // planet and shooting star speed + num
         static bn::fixed _recommended_speed (mj::difficulty_level difficulty);
 
         background _background;
         cat _cat;
         mj::difficulty_level _difficulty;
-        // easy+ normal + hard
-        planet _planet1;     
+        planet _planet1;
         planet _planet2;
         planet _planet3;
-        
-        // added only for normal + hard 
-        planet _planet4; 
+        planet _planet4;
         shooting_star _star1;
         shooting_star _star2;
-
-        // added only for hard
         shooting_star _star3;
-
-        // added only for hard
         enemy _enemy1;
-        bool _enemy1_direction; 
+        bool _enemy1_direction;
+        int  _enemy1_delay;
         bool _hit;
-
     };
 }
 
