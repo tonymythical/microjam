@@ -14,7 +14,7 @@ namespace any {
 
         public:
         /**
-         * Constructor for an instance of an aub_test_game
+         * Constructor for an instance of an any_test_game
          * 
          * @param completed_games how many microgames the player has completed so far
          * @param data shared information, such as a rng and number of frames left in the microgame

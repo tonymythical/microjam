@@ -12,7 +12,7 @@
 
 namespace {
     constexpr bn::string_view code_credits[] = { "Anthony Margullis, Yousif Sultan" };
-    constexpr bn::string_view graphics_credits[] = { "Kenney Game Assets" };
+    constexpr bn::string_view graphics_credits[] = { "Anthony Margullis, Yousif Sultan" };
     constexpr bn::string_view sfx_credits[] = {""};
     constexpr bn::string_view music_credits[] = {""};
 }
@@ -46,7 +46,7 @@ any_game_name::any_game_name([[maybe_unused]] int completed_games, [[maybe_unuse
 
 
 bn::string<16> any_game_name::title() const {
-    return "Astronaut";
+    return "Grab the Moon";
 }
 
 int any_game_name::total_frames() const {
@@ -54,10 +54,16 @@ int any_game_name::total_frames() const {
 }
 
 mj::game_result any_game_name::play([[maybe_unused]] const mj::game_data& data) {
+    const int moon_y_limit = -50;
+    const int moon_left = 70;
+    const int moon_right = 80;
     if (_player) {
         _player->update(bn::span<const platform>(_platforms, 3));
 
-        if (_player->y() < -50 && _player->x() > 70 && _player->x() < 80) { 
+       // if player hits moon, player wins
+        if (_player->y() < moon_y_limit &&
+         _player->x() > moon_left &&
+          _player->x() < moon_right) { 
          
             return mj::game_result(true,true);
              

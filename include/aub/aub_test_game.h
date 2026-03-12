@@ -35,9 +35,6 @@ class aub_test_game : public mj::game
         bn::string<16> title() const override;
 
 
-        
-
-
         /**
          * How long the timer for the game should be set to in frames.
          * 
